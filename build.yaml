@@ -10,11 +10,6 @@ targets:
             - lib/main.dart
             - lib/widgets/**.dart
             - lib/views/**.dart
-      kiwi_generator:
-        enabled: true
-        generate_for:
-          include:
-            - lib/config/**.dart
       riverpod_generator:
         enabled: true
         generate_for:

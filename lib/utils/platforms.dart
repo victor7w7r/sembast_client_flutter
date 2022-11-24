@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform, kIsWeb;
+import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform;
 
 final isDesktop = defaultTargetPlatform == TargetPlatform.linux
   || defaultTargetPlatform == TargetPlatform.macOS
@@ -10,7 +10,6 @@ final isMacOS = defaultTargetPlatform == TargetPlatform.macOS;
 
 final isAndroid = defaultTargetPlatform == TargetPlatform.android;
 final isIos = defaultTargetPlatform == TargetPlatform.iOS;
-const isWeb = kIsWeb;
 
 final isMobile = isAndroid || isIos;
 
