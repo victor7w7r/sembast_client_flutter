@@ -1,10 +1,12 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart' show doWhenWindowReady, appWindow;
 import 'package:flutter/material.dart';
-import 'package:flutter_acrylic/flutter_acrylic.dart';
+
+import 'package:bitsdojo_window/bitsdojo_window.dart' show doWhenWindowReady, appWindow;
+import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
 import 'package:functional_widget_annotation/functional_widget_annotation.dart' show swidget;
 import 'package:riverpod_context/riverpod_context.dart';
 
+import 'package:sembast_client_flutter/providers/theme_provider.dart';
 import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/views/layout.dart';
 
@@ -36,6 +38,8 @@ Future<void> main() async {
 @swidget
 Widget sembastClientApp(BuildContext context) {
 
+  final isDark = context.watch(isDarkProvider);
+
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
@@ -46,7 +50,7 @@ Widget sembastClientApp(BuildContext context) {
       useMaterial3: true,
       splashFactory: InkRipple.splashFactory
     ),
-    themeMode: ThemeMode.dark,
+    themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
     home: const Layout()
   );
 }

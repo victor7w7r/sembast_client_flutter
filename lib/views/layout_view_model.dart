@@ -20,5 +20,4 @@ class LayoutViewModel extends ChangeNotifier {
     index = i;
     notifyListeners();
   }
-
 }
