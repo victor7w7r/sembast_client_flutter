@@ -33,7 +33,7 @@ class ThemeApp {
 
 class ThemeNotifier extends Notifier<ThemeApp> {
   @override
-  ThemeApp build() => ThemeApp.light(true);
+  ThemeApp build() => locator.get<AppConfig>().theme;
 
   Future<void> toggle() async {
     state = ThemeApp(!state.isDark,
