@@ -8,13 +8,12 @@ import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/locator.dart';
 import 'package:sembast_client_flutter/providers/theme_provider.dart';
-import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/views/layout.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if(isDesktop) await Window.initialize();
 
+  await Window.initialize();
   await setup();
 
   runApp(Nester.list([
@@ -23,15 +22,13 @@ Future<void> main() async {
     (_) => const SembastClientApp(),
   ]));
 
-  if(isDesktop) {
-    doWhenWindowReady(() => appWindow
-      ..minSize = const Size(640, 360)
-      ..size = const Size(1280, 720)
-      ..alignment = Alignment.center
-      ..title = "Sembast Client for Flutter"
-      ..show()
-    );
-  }
+  doWhenWindowReady(() => appWindow
+    ..minSize = const Size(640, 360)
+    ..size = const Size(1280, 720)
+    ..alignment = Alignment.center
+    ..title = "Sembast Client for Flutter"
+    ..show()
+  );
 }
 
 class SembastClientApp extends StatelessWidget {

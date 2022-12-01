@@ -45,13 +45,11 @@ class ThemeNotifier extends Notifier<ThemeApp> {
         : isLinux ? Colors.white : const Color(0xAAFFFFFF),
       state.winEffect
     );
-    if(isDesktop) {
-      Window.setEffect(
-        effect: state.winEffect,
-        color: state.winColor,
-        dark: state.isDark
-      );
-    }
+    Window.setEffect(
+      effect: state.winEffect,
+      color: state.winColor,
+      dark: state.isDark
+    );
     await locator.get<AppConfig>().prefs.setBool('dark', state.isDark);
   }
 

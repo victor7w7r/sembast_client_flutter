@@ -6,7 +6,6 @@ import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
-import 'package:sembast_client_flutter/utils/index.dart';
 import 'package:sembast_client_flutter/views/tabs/home/home_tab_controller.dart';
 import 'package:sembast_client_flutter/views/tabs/home/home_tab_widgets.dart';
 
@@ -37,13 +36,12 @@ class HomeTab extends StatelessWidget {
         ..right = 25
         ..bottom = 25,
       db.db == null ? (
-        isDesktop ? (Niku(DragDropEmptyAdv(
+        Niku(DragDropEmptyAdv(
           lang: lang,
           dark: dark,
           drag: (t) => ctl.dragRequest(context, lang, t.files)
         ))
           ..center
-        ) : Niku(EmptyAdv(lang: lang, dark: dark)) ..center
       ) : Niku(DataLoaded(
         lang: lang,
         dark: dark,

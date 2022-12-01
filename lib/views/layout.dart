@@ -7,7 +7,6 @@ import 'package:riverpod_context/riverpod_context.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
 import 'package:sembast_client_flutter/views/drawer/drawer_app.dart';
 import 'package:sembast_client_flutter/views/layout_widgets.dart';
-import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/widgets/index.dart';
 
 class Layout extends HookWidget {
@@ -31,7 +30,7 @@ class Layout extends HookWidget {
     return n.Stack([
       Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: isDesktop ? Colors.transparent : null,
+        backgroundColor:Colors.transparent,
         appBar: AppBar(backgroundColor: Colors.transparent),
         drawer: const DrawerApp(),
         bottomNavigationBar: NavBar(

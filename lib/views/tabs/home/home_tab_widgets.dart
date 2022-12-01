@@ -118,31 +118,3 @@ class DragDropEmptyAdv extends StatelessWidget {
       ..n.center
   ]);
 }
-
-class EmptyAdv extends StatelessWidget {
-
-  const EmptyAdv({
-    super.key,
-    required this.lang,
-    required this.dark,
-  });
-
-  final bool lang;
-  final bool dark;
-
-  @override
-  Widget build(context) => n.Wrap([
-    n.Icon(Icons.upload_file)
-      ..size = 100
-      ..color = dark ? Colors.grey[500] : Colors.grey[600],
-    n.Text(dict(4, lang))
-      ..fontSize = 20,
-    n.Text(dict(6, lang))
-      ..textAlign = TextAlign.center
-      ..fontSize = 15
-  ])
-    ..spacing = 10
-    ..direction = Axis.vertical
-    ..center
-    ..n.center;
-}

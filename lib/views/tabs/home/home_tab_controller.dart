@@ -46,7 +46,7 @@ class HomeTabController extends ChangeNotifier {
         (){})
     : Task(() async => FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['db'],
+        allowedExtensions: ['.db'],
         allowMultiple: false,
         lockParentWindow: true,
           withData: true,
