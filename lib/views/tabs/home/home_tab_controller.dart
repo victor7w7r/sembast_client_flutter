@@ -69,7 +69,7 @@ class HomeTabController extends ChangeNotifier {
       return;
     }
     if(lines.first.contains(',"codec":')) {
-      input(context, dict(11, lang), dict(12, lang), true, false, null, _passctl, (val) {
+      input(context, dict(11, lang), dict(12, lang), true, false, "pass", _passctl, (val) {
         if(val != "") {
           _passctl.text = "";
           codec = sembastCodec(password: val);

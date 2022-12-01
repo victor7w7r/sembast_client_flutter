@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:dotted_border/dotted_border.dart';
+import 'package:dotted_border/dotted_border.dart' show DottedBorder;
 import 'package:niku/namespace.dart' as n;
-import 'package:nester/nester.dart';
 import 'package:niku/niku.dart' show Niku;
+import 'package:nester/nester.dart' show Nester;
 
 import 'package:sembast_client_flutter/config/dict.dart';
 import 'package:sembast_client_flutter/utils/context_extensions.dart';

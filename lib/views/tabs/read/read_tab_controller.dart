@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sembast_client_flutter/config/dict.dart';
 
-import 'package:sembast_client_flutter/functions/get.dart';
-import 'package:sembast_client_flutter/functions/getall.dart';
-import 'package:sembast_client_flutter/functions/limit.dart';
+import 'package:sembast_client_flutter/config/dict.dart';
+import 'package:sembast_client_flutter/functions/index.dart';
 import 'package:sembast_client_flutter/providers/db_provider.dart';
 import 'package:sembast_client_flutter/utils/alerts.dart';
 
@@ -29,6 +27,7 @@ class ReadTabController extends ChangeNotifier {
       .then((json){
       if(json == "") {
         alert(context, false, "Ups", dict(43, lang));
+        loading = false;
       } else {
         this.json = json;
         firstLoad = true;
@@ -56,21 +55,25 @@ class ReadTabController extends ChangeNotifier {
     });
 
   void requestLimit(BuildContext context, bool lang) =>
-    input(context, dict(46, lang), dict(12, lang), false, false, "25", limitCtl, (val) {
-      if(val != "") {
-        limit(int.parse(val), ref.read(dbProvider.notifier))
-        .then((json){
-          if(json == "") {
-            alert(context, false, "Ups", dict(43, lang));
-          } else {
-            this.json = json;
-            firstLoad = true;
-            snackBar(context, dict(42, lang));
-            notifyListeners();
-          }
-        });
-      }
-    });
+    getAll(ref.read(dbProvider.notifier))
+    .then((json) => json == ""
+      ? alert(context, false, "Ups", dict(43, lang))
+      : input(context, dict(46, lang), dict(12, lang), false, false, "25", limitCtl, (val) {
+        if(val != "") {
+          limit(int.parse(val), ref.read(dbProvider.notifier))
+          .then((json){
+            if(json == "") {
+              alert(context, false, "Ups", dict(43, lang));
+            } else {
+              this.json = json;
+              firstLoad = true;
+              snackBar(context, dict(42, lang));
+              notifyListeners();
+            }
+          });
+        }
+      })
+    );
 }
 
 final readTabController = ChangeNotifierProvider(ReadTabController.new);

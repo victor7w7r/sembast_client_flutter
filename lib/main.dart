@@ -14,6 +14,7 @@ import 'package:sembast_client_flutter/views/layout.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if(isDesktop) await Window.initialize();
+
   await setup();
 
   runApp(Nester.list([

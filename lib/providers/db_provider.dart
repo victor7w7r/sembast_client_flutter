@@ -59,5 +59,9 @@ class DbNotifier extends ChangeNotifier {
 }
 
 final dbProvider = ChangeNotifierProvider<DbNotifier>((_) => DbNotifier());
-final storeSelProvider = Provider((ref) => ref.watch(dbProvider).storeSelected);
-final nullChDbProvider = Provider((ref) => ref.watch(dbProvider).db != null);
+
+final storeSelProvider = Provider((ref) =>
+  ref.watch(dbProvider).storeSelected);
+
+final nullChDbProvider = Provider((ref) =>
+  ref.watch(dbProvider).db != null);

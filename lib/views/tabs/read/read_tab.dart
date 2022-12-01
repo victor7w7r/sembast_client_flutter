@@ -26,7 +26,7 @@ class ReadTab extends StatelessWidget {
         ..n.top = 60
         ..n.left = 35
         ..fontSize = 35,
-      if(ctl.loading)Niku(const CircularProgressIndicator())
+      if(ctl.loading) Niku(const CircularProgressIndicator())
         ..center,
       n.Text(dict(44, lang))
         ..fontSize = 15

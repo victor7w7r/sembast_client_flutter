@@ -1,5 +1,4 @@
 import 'dart:convert' show jsonEncode;
-import 'dart:io' show Platform, File;
 
 import 'package:fpdart/fpdart.dart';
 import 'package:sembast/sembast.dart';

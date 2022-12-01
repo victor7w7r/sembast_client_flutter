@@ -54,7 +54,8 @@ class HomeTab extends StatelessWidget {
         check: () => ctl.requestCheck(context, db.db!, lang),
         use: () => ctl.requestUse(context, db.db!, lang),
         detach: () => ctl.requestDetach(context, lang)
-      )) ..center
+      ))
+        ..center
     ]);
   }
 }

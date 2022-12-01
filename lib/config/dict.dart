@@ -48,6 +48,14 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "El límite de consulta es de 25 elementos",
     "Obtener desde...",
     "Consulta desde... (Para 25 llegaría hasta el 50)",
+    "Nueva llave: ",
+    "Usar",
+    "Esta llave ya existe",
+    "Escribir",
+    "Pulse escribir para editar el record\ndespués OK para guardarlo",
+    "El formato del JSON no es válido",
+    "El formato del JSON no es válido, no se permite el uso de arrays",
+    "Objeto insertado exitosamente",
   ];
 
   List<String> dictEng = [
@@ -98,6 +106,14 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "The query limit is 25 elements",
     "Get from...",
     "Query from... (For 25 it would be until 50)",
+    "New key: ",
+    "Use",
+    "This key already exists",
+    "Write",
+    "Press write to edit the record\nthen OK to save it",
+    "The JSON format is not valid",
+    "The JSON format is not valid, arrays are not allowed",
+    "Object inserted successfully",
   ];
 
   return isEng
