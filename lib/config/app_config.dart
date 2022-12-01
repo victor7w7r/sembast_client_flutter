@@ -1,4 +1,4 @@
-import 'package:fpdart/fpdart.dart';
+import 'package:fpdart/fpdart.dart' show Option;
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
 
@@ -9,15 +9,14 @@ import 'package:sembast_client_flutter/utils/platforms.dart';
 class AppConfig {
 
   late SharedPreferences prefs;
-  late ThemeApp theme;
-  late bool isEng;
+  ThemeApp theme = ThemeApp.dark(true);
+  bool isEng = true;
 
   @FactoryMethod(preResolve: true)
   static Future<AppConfig> init() async {
 
-    final config = AppConfig();
-
-    config.prefs = await SharedPreferences.getInstance();
+    final config = AppConfig()
+      ..prefs = await SharedPreferences.getInstance();
 
     Option.fromNullable(config.prefs.getBool('dark')).fold(
       () => config.prefs.setBool('dark', true)

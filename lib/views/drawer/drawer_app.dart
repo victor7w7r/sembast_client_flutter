@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:niku/namespace.dart' as n;
 import 'package:riverpod_context/riverpod_context.dart';
 
-import 'package:sembast_client_flutter/providers/lang_provider.dart';
-import 'package:sembast_client_flutter/providers/theme_provider.dart';
+import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/config/dict.dart';
 
 class DrawerApp extends StatelessWidget {
 
@@ -18,19 +19,42 @@ class DrawerApp extends StatelessWidget {
 
     return Drawer(
       child: n.Stack([
-        DrawerHeader(
-          child: n.Text('Sembast Client for Flutter')
-            ..fontSize = 20,
-        ),
-      /*  n.Image.asset(theme.darkMode? 'assets/brandwhite.png': 'assets/brand.png')
-          ..width = 250.0
-          ..height = 75.0*/
-        n.Row([
-          n.Text('Sembast Client for Flutter')
-            ..fontSize = 20,
+        n.Text('Sembast Client for Flutter')
+          ..mt = 30
+          ..n.topCenter
+          ..bold
+          ..fontSize = 20,
+        n.Wrap([
+          n.Row([
+            n.Text(dict(0, lang))
+              ..fontSize = 18,
+            DayNightSwitcher(
+              isDarkModeEnabled: theme.isDark,
+              onStateChanged: (_) =>
+                context.read(themeProvider.notifier).toggle(),
+            ),
+          ]),
+          n.Row([
+            n.Text(dict(1, lang))
+              ..fontSize = 17,
+            Switch(
+              value: lang,
+              inactiveThumbColor: Colors.purpleAccent,
+              inactiveTrackColor: Colors.purple,
+              onChanged: (_) =>
+                context.read(langProvider.notifier).toggle()
+            ),
+            n.Text(dict(2, lang))
+              ..fontSize = 17,
+          ])
         ])
-          ..mainAxisAlignment = MainAxisAlignment.center
-          ..n.center
+          ..direction = Axis.vertical
+          ..crossCenter
+          ..n.center,
+        n.Image.asset(theme.isDark ? 'assets/brandwhite.png' : 'assets/brand.png')
+          ..n.bottomCenter
+          ..width = 250
+          ..mb = 10
       ])
     );
   }

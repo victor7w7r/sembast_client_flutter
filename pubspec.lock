@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.10.0"
-  back_button_interceptor:
-    dependency: transitive
-    description:
-      name: back_button_interceptor
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.0.2"
   bitsdojo_window:
     dependency: "direct main"
     description:
@@ -176,6 +169,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  conditioned:
+    dependency: "direct main"
+    description:
+      name: conditioned
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0-dev.1"
   convert:
     dependency: transitive
     description:
@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  cross_file:
+    dependency: "direct main"
+    description:
+      name: cross_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3+2"
   crypto:
     dependency: "direct main"
     description:
@@ -197,13 +204,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.2"
-  curved_navigation_bar:
-    dependency: "direct main"
-    description:
-      name: curved_navigation_bar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.3"
   dart_style:
     dependency: transitive
     description:
@@ -211,6 +211,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.4"
+  day_night_switcher:
+    dependency: "direct main"
+    description:
+      name: day_night_switcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0+1"
+  desktop_drop:
+    dependency: "direct main"
+    description:
+      name: desktop_drop
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
+  dotted_border:
+    dependency: "direct main"
+    description:
+      name: dotted_border
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0+3"
   encrypt:
     dependency: "direct main"
     description:
@@ -238,7 +259,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.2"
+    version: "5.2.3"
   fixnum:
     dependency: transitive
     description:
@@ -265,6 +286,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.5+1"
+  flutter_json_view:
+    dependency: "direct main"
+    description:
+      name: flutter_json_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -278,7 +306,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.15"
+    version: "2.2.16"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -312,20 +340,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
-  functional_widget:
-    dependency: "direct dev"
-    description:
-      name: functional_widget
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.1"
-  functional_widget_annotation:
-    dependency: "direct main"
-    description:
-      name: functional_widget_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.0"
   get_it:
     dependency: "direct main"
     description:
@@ -388,14 +402,14 @@ packages:
       name: injectable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.0"
   injectable_generator:
     dependency: "direct dev"
     description:
       name: injectable_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.2"
   io:
     dependency: transitive
     description:
@@ -403,6 +417,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  isolated_worker:
+    dependency: "direct main"
+    description:
+      name: isolated_worker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   js:
     dependency: transitive
     description:
@@ -473,13 +494,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.3"
-  one_context:
-    dependency: "direct main"
-    description:
-      name: one_context
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   package_config:
     dependency: transitive
     description:
@@ -494,6 +508,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   path_provider:
     dependency: "direct main"
     description:
@@ -731,7 +759,7 @@ packages:
     source: sdk
     version: "0.0.99"
   source_gen:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: source_gen
       url: "https://pub.dartlang.org"

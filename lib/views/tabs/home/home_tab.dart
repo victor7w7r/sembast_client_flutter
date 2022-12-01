@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:niku/namespace.dart' as n;
+import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
 
-import 'package:sembast_client_flutter/providers/theme_provider.dart';
+import 'package:sembast_client_flutter/config/index.dart';
+import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/utils/index.dart';
 import 'package:sembast_client_flutter/views/tabs/home/home_tab_controller.dart';
+import 'package:sembast_client_flutter/views/tabs/home/home_tab_widgets.dart';
 
 class HomeTab extends StatelessWidget {
 
@@ -13,24 +17,44 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(context) {
 
-    final isDark = context.watch(isDarkProvider);
+    final db = context.watch(dbProvider);
+    final lang = context.watch(langProvider);
+    final dark = context.watch(isDarkProvider);
+
     final ctl = context.watch(homeTabController);
 
     return n.Stack([
-      n.IconButton(
-        isDark ? Icons.light_mode : Icons.dark_mode,
-        color: isDark ? Colors.white : Colors.black,
-        onPressed: () => context.read(themeProvider.notifier).toggle(),
-      )
-        ..n.top = 40
-        ..n.right = 10,
-      n.Text(ctl.counter.toString())
-        ..n.center,
-      n.Button(n.Text('Increment'),
-        onPressed: ctl.incrementCounter,
-      )
-        ..n.bottom = 40
-        ..n.center,
+      n.Text(dict(3, lang))
+        ..bold
+        ..n.top = 60
+        ..n.left = 35
+        ..fontSize = 35,
+      Niku(FloatingActionButton(
+        onPressed: () => ctl.buttonRequest(context, lang, db.db != null),
+        backgroundColor: Colors.blue,
+        child: Icon(db.db == null ? Icons.upload : Icons.close),
+      ))
+        ..right = 25
+        ..bottom = 25,
+      db.db == null ? (
+        isDesktop ? (Niku(DragDropEmptyAdv(
+          lang: lang,
+          dark: dark,
+          drag: (t) => ctl.dragRequest(context, lang, t.files)
+        ))
+          ..center
+        ) : Niku(EmptyAdv(lang: lang, dark: dark)) ..center
+      ) : Niku(DataLoaded(
+        lang: lang,
+        dark: dark,
+        dbName: db.dbName,
+        storeName: db.storeName,
+        ctl: ctl.storectl,
+        change: ctl.storeChange,
+        check: () => ctl.requestCheck(context, db.db!, lang),
+        use: () => ctl.requestUse(context, db.db!, lang),
+        detach: () => ctl.requestDetach(context, lang)
+      )) ..center
     ]);
   }
 }
