@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+import 'package:bitsdojo_window/bitsdojo_window.dart' show doWhenWindowReady, appWindow;
 import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:fpdart/fpdart.dart' show Option;
 import 'package:injectable/injectable.dart';
@@ -15,6 +18,8 @@ class AppConfig {
 
   @FactoryMethod(preResolve: true)
   static Future<AppConfig> init() async {
+
+    WidgetsFlutterBinding.ensureInitialized();
 
     final config = AppConfig()
       ..prefs = await SharedPreferences.getInstance();
@@ -34,6 +39,14 @@ class AppConfig {
     );
 
     await Window.initialize();
+
+    doWhenWindowReady(() => appWindow
+      ..minSize = const Size(640, 360)
+      ..size = const Size(1280, 720)
+      ..alignment = Alignment.center
+      ..title = "Sembast Client for Flutter"
+      ..show()
+    );
 
     return config;
   }
