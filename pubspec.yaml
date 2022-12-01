@@ -18,6 +18,7 @@ dependencies:
   desktop_drop: ^0.4.0
   dotted_border: ^2.0.0+3
   encrypt: ^5.0.1
+  feature_discovery: ^0.14.1
   file_picker: ^5.2.3
   flutter_acrylic: ^1.0.0+2
   flutter_json_view: ^1.0.0
@@ -30,13 +31,11 @@ dependencies:
   nester: ^1.2.1
   niku: ^2.3.3
   path: ^1.8.2
-  path_provider: ^2.0.11
   permission_handler: ^10.2.0
   riverpod_context: ^0.3.0
   sembast: ^3.3.1
   shared_preferences: ^2.0.15
-  tailwind_colors: ^0.3.1
-  wave: ^0.2.2
+  xterm: ^3.4.0
 
 dev_dependencies:
   build_runner: ^2.3.2

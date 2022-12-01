@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart' show doWhenWindowReady, appWindow;
-import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
 import 'package:nester/nester.dart' show Nester;
 import 'package:riverpod_context/riverpod_context.dart';
@@ -13,7 +12,6 @@ import 'package:sembast_client_flutter/views/layout.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Window.initialize();
   await setup();
 
   runApp(Nester.list([

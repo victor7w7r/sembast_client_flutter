@@ -1,3 +1,4 @@
+import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:fpdart/fpdart.dart' show Option;
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
@@ -31,6 +32,8 @@ class AppConfig {
         .then((_) => config.isEng = true),
       (lang) => config.isEng = lang
     );
+
+    await Window.initialize();
 
     return config;
   }
