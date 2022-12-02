@@ -40,7 +40,7 @@ class ReadTabController extends ChangeNotifier {
   }
 
   void requestQuery(BuildContext context, bool lang) =>
-    getRec(queryCtl.text, ref.read(dbProvider.notifier))
+    getRec(queryCtl.text, ref.read(dbProvider.notifier), false)
     .then((json){
       if(json == "") {
         alert(context, false, "Ups", dict(40, lang));
@@ -74,6 +74,16 @@ class ReadTabController extends ChangeNotifier {
         }
       })
     );
+
+  void refresh() {
+    firstLoad = false;
+    loading = false;
+    json = "{}";
+    queryCtl.text = "";
+    limitCtl.text = "";
+    notifyListeners();
+  }
+
 }
 
 final readTabController = ChangeNotifierProvider(ReadTabController.new);

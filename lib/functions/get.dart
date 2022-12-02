@@ -3,9 +3,9 @@ import 'dart:convert' show jsonEncode;
 import 'package:sembast/sembast.dart';
 
 import 'package:sembast_client_flutter/providers/db_provider.dart';
-import 'package:sembast_client_flutter/utils/number.dart';
+import 'package:sembast_client_flutter/utils/index.dart';
 
-Future<String> getRec(String key, DbNotifier dbNot) async {
+Future<String> getRec(String key, DbNotifier dbNot, bool prettyFormat) async {
 
   if(dbNot.isIntKeys) {
     if(isNumeric(key)) {
@@ -13,7 +13,7 @@ Future<String> getRec(String key, DbNotifier dbNot) async {
       if(recOp == null) {
         return "";
       } else {
-        return jsonEncode(recOp);
+        return prettyFormat ? pretty(recOp) : jsonEncode(recOp);
       }
     } else {
       return "mismatch";
@@ -23,7 +23,7 @@ Future<String> getRec(String key, DbNotifier dbNot) async {
     if(recOp == null) {
       return "";
     } else {
-      return jsonEncode(recOp);
+      return prettyFormat ? pretty(recOp) : jsonEncode(recOp);
     }
   }
 }

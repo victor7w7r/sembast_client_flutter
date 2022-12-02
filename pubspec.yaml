@@ -23,6 +23,7 @@ dependencies:
   flutter_acrylic: ^1.0.0+2
   flutter_json_view: ^1.0.0
   flutter_hooks: ^0.18.5+1
+  flutter_pty: ^0.3.1
   flutter_riverpod: ^2.1.1
   fpdart: ^0.3.0
   get_it: ^7.2.0

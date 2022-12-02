@@ -4,3 +4,4 @@ export 'get.dart';
 export 'getall.dart';
 export 'insert.dart';
 export 'limit.dart';
+export 'update.dart';

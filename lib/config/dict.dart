@@ -56,6 +56,17 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "El formato del JSON no es válido",
     "El formato del JSON no es válido, no se permite el uso de arrays",
     "Objeto insertado exitosamente",
+    "Llave existente: ",
+    "Esta llave no existe",
+    "Objeto actualizado exitosamente",
+    "Eliminar",
+    "Eliminar todo",
+    "Vamos a eliminar",
+    "¿Desea eliminar el record con esta llave?",
+    "Objeto eliminado exitosamente",
+    "Eliminemos todo",
+    "¿Desea eliminar todo el store?, esta acción es irreversible",
+    "Todo el store eliminado exitosamente",
   ];
 
   List<String> dictEng = [
@@ -114,6 +125,17 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "The JSON format is not valid",
     "The JSON format is not valid, arrays are not allowed",
     "Object inserted successfully",
+    "Existing key: ",
+    "This key does not exist",
+    "Object updated successfully",
+    "Delete",
+    "Delete all",
+    "Delete...",
+    "Do you want to delete the record with this key?",
+    "Object deleted successfully",
+    "Eliminate all",
+    "Do you want to delete the entire store?, this action is irreversible",
+    "The entire store was deleted successfully",
   ];
 
   return isEng

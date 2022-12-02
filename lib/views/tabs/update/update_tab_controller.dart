@@ -8,17 +8,18 @@ import 'package:fpdart/fpdart.dart' show Either, IO;
 import 'package:sembast_client_flutter/config/dict.dart';
 import 'package:sembast_client_flutter/functions/index.dart';
 import 'package:sembast_client_flutter/providers/db_provider.dart';
-import 'package:sembast_client_flutter/utils/alerts.dart';
+import 'package:sembast_client_flutter/utils/index.dart';
 
-class AddTabController extends ChangeNotifier {
+class UpdateTabController extends ChangeNotifier {
 
-  AddTabController(this.ref);
+  UpdateTabController(this.ref);
 
   final ChangeNotifierProviderRef ref;
 
   final queryCtl = TextEditingController();
   final editCtl = TextEditingController();
 
+  String json = "{\n}";
   String key = "";
 
   void changeCtl(String val) => notifyListeners();
@@ -27,17 +28,20 @@ class AddTabController extends ChangeNotifier {
     checkKey(queryCtl.text, ref.read(dbProvider.notifier))
     .then((res){
       if(res == "") {
-        alert(context, false, "Error", dict(49, lang));
+        getRec(key, ref.read(dbProvider.notifier), true).then((rjson) {
+          json = rjson;
+          key = queryCtl.text;
+          notifyListeners();
+        });
       } else if (res == "NAN") {
         alert(context, false, "Error", dict(41, lang));
       } else {
-        key = queryCtl.text;
-        notifyListeners();
+        alert(context, false, "Error", dict(56, lang));
       }
     });
   }
 
-  void requestAdd(BuildContext context, bool lang, String? val) {
+  void requestEdit(BuildContext context, bool lang, String? val) {
     if(val != null) {
       final trimmed = val.trim();
       if(trimmed.startsWith('{') && trimmed.endsWith('}')) {
@@ -46,9 +50,9 @@ class AddTabController extends ChangeNotifier {
         ).run, (e, __) => e).fold(
           (_) => alert(context, false, "Error", dict(52, lang)),
           (record) {
-            insert(record, key, ref.read(dbProvider.notifier));
-            snackBar(context, dict(54, lang));
-            refresh();
+            json = val;
+            update(record, key, ref.read(dbProvider.notifier));
+            snackBar(context, dict(57, lang));
             notifyListeners();
           }
         );
@@ -62,9 +66,10 @@ class AddTabController extends ChangeNotifier {
 
   void refresh() {
     key = "";
+    json = "";
     editCtl.text = "";
     queryCtl.text = "";
   }
 }
 
-final addTabController = ChangeNotifierProvider(AddTabController.new);
+final updateTabController = ChangeNotifierProvider(UpdateTabController.new);

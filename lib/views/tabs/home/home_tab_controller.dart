@@ -14,6 +14,10 @@ import 'package:sembast_client_flutter/config/dict.dart';
 import 'package:sembast_client_flutter/functions/check.dart';
 import 'package:sembast_client_flutter/providers/db_provider.dart';
 import 'package:sembast_client_flutter/utils/index.dart';
+import 'package:sembast_client_flutter/views/tabs/add/add_tab_controller.dart';
+import 'package:sembast_client_flutter/views/tabs/delete/delete_tab_controller.dart';
+import 'package:sembast_client_flutter/views/tabs/read/read_tab_controller.dart';
+import 'package:sembast_client_flutter/views/tabs/update/update_tab_controller.dart';
 
 class HomeTabController extends ChangeNotifier {
 
@@ -42,11 +46,14 @@ class HomeTabController extends ChangeNotifier {
         false,
         dict(19, lang),
         "No",
-        ref.read(dbProvider.notifier).closeDb,
+        () {
+          ref.read(dbProvider.notifier).closeDb();
+          refresh();
+        },
         (){})
     : Task(() async => FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['.db'],
+        allowedExtensions: ['db'],
         allowMultiple: false,
         lockParentWindow: true,
           withData: true,
@@ -138,9 +145,17 @@ class HomeTabController extends ChangeNotifier {
     });
 
   void requestDetach(BuildContext context, bool lang) {
-    ref.read(dbProvider.notifier).detachStore();
     snackBar(context, dict(32, lang));
+    ref.read(dbProvider.notifier).detachStore();
+    refresh();
     notifyListeners();
+  }
+
+  void refresh() {
+    ref.read(addTabController.notifier).refresh();
+    ref.read(deleteTabController.notifier).refresh();
+    ref.read(readTabController.notifier).refresh();
+    ref.read(updateTabController.notifier).refresh();
   }
 
 }
