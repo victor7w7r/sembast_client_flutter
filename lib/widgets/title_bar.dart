@@ -5,7 +5,6 @@ import 'package:niku/namespace.dart' as n;
 import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/providers/theme_provider.dart';
-import 'package:sembast_client_flutter/utils/platforms.dart';
 
 class WindowTitleBar extends StatelessWidget {
 
