@@ -2,15 +2,11 @@ icons_launcher:
   image_path: 'assets/icon.png'
   platforms:
     android:
-      enable: true
-      image_path: 'assets/icon.png'
+      enable: false
     ios:
-      enable: true
-      image_path: 'assets/icon.png'
+      enable: false
     web:
-      enable: true
-      image_path: 'assets/icon.png'
-      favicon_path: 'assets/icon.png'
+      enable: false
     macos:
       enable: true
       image_path: 'assets/icon.png'
