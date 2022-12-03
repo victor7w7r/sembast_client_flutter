@@ -1,0 +1,133 @@
+name: "main"
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Install dependencies
+        run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+      - name: Install project dependencies
+        run: flutter pub get
+      - name: Enable linux build
+        run: flutter config --enable-linux-desktop
+      - name: Build artifacts
+        run: flutter build linux --release
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: sembast_client_flutter_linux64.zip
+          directory: build/linux/x64/release/bundle
+      - name: Make zip directory
+        run: mkdir build/linux/x64/release/bundle/zip
+      - name: Move zip directory
+        run: mv build/linux/x64/release/bundle/sembast_client_flutter_linux64.zip build/linux/x64/release/bundle/zip/
+      - name: Release Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin-linux
+          path: build/linux/x64/release/bundle/zip
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Install project dependencies
+        run: flutter pub get
+      - name: Enable windows build
+        run: flutter config --enable-windows-desktop
+      - name: Build artifacts
+        run: flutter build windows --release
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: sembast_client_flutter_win64.zip
+          directory: build/windows/runner/Release
+      - name: Make zip directory
+        run: mkdir build/windows/runner/Release/zip
+      - name: Move zip directory
+        run: move build/windows/runner/Release/sembast_client_flutter_win64.zip build/windows/runner/Release/zip/
+      - name: Release Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin-win
+          path: build/linux/x64/release/bundle/zip
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Install project dependencies
+        run: flutter pub get
+      - name: Enable linux build
+        run: flutter config --enable-macos-desktop
+      - name: Build artifacts
+        run: flutter build macos --release
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: sembast_client_flutter_macos64.zip
+          directory: build/macos/Build/Products/Release
+      - name: Make zip directory
+        run: mkdir build/macos/Build/Products/Release/zip
+      - name: Move zip directory
+        run: mv build/macos/Build/Products/Release/sembast_client_flutter_macos64.zip build/macos/Build/Products/Release/zip/
+      - name: Release Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin-macos
+          path: build/linux/x64/release/bundle/zip
+  linux-release:
+    needs: build-linux
+    name: Release to Repository for Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: bin-linux
+          path: bin-lnx
+      - uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: bin-*/*
+  win-release:
+    needs: build-linux
+    name: Release to Repository for Windows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: bin-win
+          path: bin-win
+      - uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: bin-*/*
+  macos-release:
+    needs: build-linux
+    name: Release to Repository for MacOS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: bin-macos
+          path: bin-mc
+      - uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: bin-*/*
+    
