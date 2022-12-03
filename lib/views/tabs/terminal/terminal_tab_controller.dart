@@ -37,7 +37,6 @@ class TerminalTabController extends ChangeNotifier {
   late final Pty pty;
 
   void init() {
-
     final location = '${_app.tempPath}/${_app.cliApp}';
     if(!File(location).existsSync()) {
       download('$_url/${_app.cliApp}', location, _cancel).then((res) {

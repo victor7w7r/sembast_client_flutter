@@ -25,7 +25,7 @@ class ThemeApp {
   factory ThemeApp.dark(bool isSolid) => ThemeApp(
     true,
     ThemeMode.dark,
-    isSolid ? Colors.black : const Color(0xCC222222),
+    const Color(0xCC222222),
     isSolid ? WindowEffect.solid : WindowEffect.aero
   );
 
@@ -41,7 +41,7 @@ class ThemeNotifier extends Notifier<ThemeApp> {
         ? ThemeMode.dark
         : ThemeMode.light,
       !state.isDark
-        ? isLinux ? Colors.black : const Color(0xCC222222)
+        ? const Color(0xCC222222)
         : isLinux ? Colors.white : const Color(0xAAFFFFFF),
       state.winEffect
     );
