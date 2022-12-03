@@ -10,11 +10,13 @@ class DbNotifier extends ChangeNotifier {
   bool isIntKeys = false;
   StoreRef<int, Map<String, Object?>>? storeRefInt;
   StoreRef<String, Map<String, Object?>>? storeRefStr;
+  String dbPath = "";
   String dbName = "";
   String storeName = "";
 
   void openDb(Database incDb, String dbName) {
     db = incDb;
+    dbPath = dbName;
     this.dbName = basename(dbName);
     notifyListeners();
   }
@@ -27,6 +29,7 @@ class DbNotifier extends ChangeNotifier {
     storeRefStr = null;
     db = null;
     dbName = "";
+    dbPath = "";
     storeName = "";
     notifyListeners();
   }
@@ -63,5 +66,5 @@ final dbProvider = ChangeNotifierProvider<DbNotifier>((_) => DbNotifier());
 final storeSelProvider = Provider((ref) =>
   ref.watch(dbProvider).storeSelected);
 
-final nullChDbProvider = Provider((ref) =>
+final isDbOpenProvider = Provider((ref) =>
   ref.watch(dbProvider).db != null);

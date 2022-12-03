@@ -27,7 +27,6 @@ class BodyBuilder extends StatelessWidget {
       Case(index == 2, builder: AddTab.new),
       Case(index == 3, builder: UpdateTab.new),
       Case(index == 4, builder: DeleteTab.new),
-      Case(index == 5, builder: TerminalTab.new)
     ],
     defaultBuilder: Container.new
   ) : Conditioned(
@@ -59,10 +58,6 @@ List<BottomNavigationBarItem> dbLoadedIconsTab(bool isDark, bool lang) => [
   BottomNavigationBarItem(
     icon: Icon(Icons.delete, size: 30, color: isDark ? Colors.white : Colors.black),
     label: lang ? 'Delete' : 'Eliminar',
-  ),
-    BottomNavigationBarItem(
-    icon: Icon(Icons.terminal, size: 30, color: isDark ? Colors.white : Colors.black),
-    label: 'Terminal',
   )
 ];
 

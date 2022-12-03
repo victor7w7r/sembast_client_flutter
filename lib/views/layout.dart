@@ -18,6 +18,7 @@ class Layout extends HookWidget {
 
     final isDark = context.watch(isDarkProvider);
     final isStore = context.watch(storeSelProvider);
+    final isDb = context.watch(isDbOpenProvider);
     final lang = context.watch(langProvider);
 
     final index = useState<int>(0);
@@ -33,14 +34,14 @@ class Layout extends HookWidget {
         backgroundColor:Colors.transparent,
         appBar: AppBar(backgroundColor: Colors.transparent),
         drawer: const DrawerApp(),
-        bottomNavigationBar: NavBar(
+        bottomNavigationBar: !isDb || isStore ? NavBar(
           index: index.value,
           isDark: context.watch(isDarkProvider),
           onTap: (i) => index.value = i,
           items: isStore
             ? dbLoadedIconsTab(isDark, !lang)
             : iconsTab(isDark, !lang)
-        ),
+        ) : null,
         body: BodyBuilder(isStore: isStore, index: index.value)
       ),
       const WindowTitleBar()

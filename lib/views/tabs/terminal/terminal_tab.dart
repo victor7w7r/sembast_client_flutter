@@ -4,7 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:niku/namespace.dart' as n;
 import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
+import 'package:sembast_client_flutter/config/dict.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/widgets/drag_drop.dart';
 import 'package:xterm/xterm.dart';
 
 import 'package:sembast_client_flutter/utils/context_extensions.dart';
@@ -17,11 +19,13 @@ class TerminalTab extends HookWidget {
   @override
   Widget build(context) {
 
-    final ctl = context.watch(terminalTabController);
     final dark = context.watch(isDarkProvider);
+    final lang = context.watch(langProvider);
+
+    final ctl = context.watch(terminalTabController);
 
     useEffect((){
-      WidgetsBinding.instance.endOfFrame.then((_) => ctl.startPty());
+      WidgetsBinding.instance.endOfFrame.then((_) => ctl.init());
       return null;
     },[]);
 
@@ -31,17 +35,41 @@ class TerminalTab extends HookWidget {
         ..n.top = 60
         ..n.left = 35
         ..fontSize = 35,
-      Niku(TerminalView(
+      if(ctl.error) n.Text(dict(67, lang))
+        ..n.center
+        ..textAlign = TextAlign.center
+        ..fontSize = 20,
+      if(!ctl.loading && ctl.path == "") Niku(FloatingActionButton(
+        onPressed: () => ctl.buttonRequest(context, lang),
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.upload),
+      ))
+        ..right = 25
+        ..bottom = 25,
+      if(ctl.loading) n.Column([
+        const CircularProgressIndicator(),
+        const SizedBox(height: 20),
+        n.Text(dict(66, lang)) ..fontSize = 20
+      ])
+        ..n.center
+        ..mainAxisAlignment = MainAxisAlignment.center,
+      if(!ctl.loading && ctl.path == "") Niku(DragDrop(
+          lang: lang,
+          dark: dark,
+          drag: (t) => ctl.dragRequest(context, lang, t.files)
+        ))
+          ..center,
+      if(!ctl.loading && ctl.path != "") Niku(TerminalView(
         ctl.terminal,
         controller: ctl.terminalController,
         theme: TerminalThemes.whiteOnBlack,
         autofocus: true,
         backgroundOpacity: dark ? 0.2 : 0.7,
       ))
-        ..w = context.mediaQuerySize.width - 100
-        ..h = context.mediaQuerySize.height - 300
-        ..mt = 50
-        ..center
+          ..w = context.mediaQuerySize.width - 100
+          ..h = context.mediaQuerySize.height - 300
+          ..mt = 50
+          ..center
     ]);
   }
 }

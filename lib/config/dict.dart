@@ -67,6 +67,9 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "Eliminemos todo",
     "¿Desea eliminar todo el store?, esta acción es irreversible",
     "Todo el store eliminado exitosamente",
+    "Descargando el cliente CLI",
+    "Error: No tienes conexión a internet\no no tienes permisos suficientes para descargar",
+    "El proceso ha terminado con código ${custom != null ? custom[0] : ''}]",
   ];
 
   List<String> dictEng = [
@@ -136,6 +139,9 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "Eliminate all",
     "Do you want to delete the entire store?, this action is irreversible",
     "The entire store was deleted successfully",
+    "Downloading the CLI client",
+    "Error: You do not have internet connection or\nyou do not have enough permissions to download",
+    "The process has ended with code ${custom != null ? custom[0] : ''}",
   ];
 
   return isEng
