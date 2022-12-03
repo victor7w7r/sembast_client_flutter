@@ -6,6 +6,7 @@ Future<bool> download(String url, String savePath, CancelToken cancel) async {
     return true;
 
   } catch (_) {
+    print(_);
     return false;
   }
 }

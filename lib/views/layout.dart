@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_acrylic/flutter_acrylic.dart' show TitlebarSafeArea;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:niku/namespace.dart' as n;
 import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/views/drawer/drawer_app.dart';
 import 'package:sembast_client_flutter/views/layout_widgets.dart';
 import 'package:sembast_client_flutter/widgets/index.dart';
@@ -29,26 +29,27 @@ class Layout extends HookWidget {
       return null;
     }, []);
 
-    return TitlebarSafeArea(
-      child: n.Stack([
-        Scaffold(
-          extendBodyBehindAppBar: true,
-          backgroundColor:Colors.transparent,
-          appBar: AppBar(backgroundColor: Colors.transparent),
-          drawer: const DrawerApp(),
-          bottomNavigationBar: !isDb || isStore ? NavBar(
-            index: index.value,
-            isDark: context.watch(isDarkProvider),
-            onTap: (i) => index.value = i,
-            items: isStore
-              ? dbLoadedIconsTab(isDark, !lang)
-              : iconsTab(isDark, !lang)
-          ) : null,
-          body: BodyBuilder(isStore: isStore, index: index.value)
+    return n.Stack([
+      Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor:Colors.transparent,
+        appBar: AppBar(
+          toolbarHeight: isMacOS ? 90 : 50,
+          backgroundColor: Colors.transparent,
         ),
-        const WindowTitleBar()
-      ])
-    );
+        drawer: const DrawerApp(),
+        bottomNavigationBar: !isDb || isStore ? NavBar(
+          index: index.value,
+          isDark: context.watch(isDarkProvider),
+          onTap: (i) => index.value = i,
+          items: isStore
+            ? dbLoadedIconsTab(isDark, !lang)
+            : iconsTab(isDark, !lang)
+        ) : null,
+        body: BodyBuilder(isStore: isStore, index: index.value)
+      ),
+      const WindowTitleBar()
+    ]);
 
   }
 }

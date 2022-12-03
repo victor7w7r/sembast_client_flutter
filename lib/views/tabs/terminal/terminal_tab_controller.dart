@@ -52,6 +52,7 @@ class TerminalTabController extends ChangeNotifier {
           }
         } else {
           error = true;
+          loading = false;
           notifyListeners();
         }
       });

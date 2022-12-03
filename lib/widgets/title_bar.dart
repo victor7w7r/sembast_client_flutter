@@ -35,7 +35,7 @@ class WindowTitleBar extends StatelessWidget {
         : Colors.white.withOpacity(0.08)
     );
 
-    return (isWindows || isLinux) ? WindowTitleBarBox(
+    return WindowTitleBarBox(
       child: n.Row([
         Expanded(child: MoveWindow()),
         n.Row([
@@ -44,6 +44,6 @@ class WindowTitleBar extends StatelessWidget {
           CloseWindowButton(onPressed: appWindow.close, colors: buttonColors)
         ])
       ])
-    ) : Container();
+    );
   }
 }

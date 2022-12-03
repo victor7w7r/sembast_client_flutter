@@ -39,7 +39,7 @@ class TerminalTab extends HookWidget {
         ..n.center
         ..textAlign = TextAlign.center
         ..fontSize = 20,
-      if(!ctl.loading && ctl.path == "") Niku(FloatingActionButton(
+      if(!ctl.loading && ctl.path == "" && !ctl.error) Niku(FloatingActionButton(
         onPressed: () => ctl.buttonRequest(context, lang),
         backgroundColor: Colors.blue,
         child: const Icon(Icons.upload),
@@ -53,13 +53,13 @@ class TerminalTab extends HookWidget {
       ])
         ..n.center
         ..mainAxisAlignment = MainAxisAlignment.center,
-      if(!ctl.loading && ctl.path == "") Niku(DragDrop(
+      if(!ctl.loading && ctl.path == "" && !ctl.error) Niku(DragDrop(
           lang: lang,
           dark: dark,
           drag: (t) => ctl.dragRequest(context, lang, t.files)
         ))
           ..center,
-      if(!ctl.loading && ctl.path != "") Niku(TerminalView(
+      if(!ctl.loading && ctl.path != "" && !ctl.error) Niku(TerminalView(
         ctl.terminal,
         controller: ctl.terminalController,
         theme: TerminalThemes.whiteOnBlack,
