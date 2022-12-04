@@ -77,7 +77,7 @@ jobs:
       - name: Build artifacts
         run: flutter build macos --release
       - run: mkdir build/macos/Build/Products/Release/app
-      - run: mv -r 'build/macos/Build/Products/Release/Sembast Client.app' build/macos/Build/Products/Release/app/
+      - run: mv 'build/macos/Build/Products/Release/Sembast Client.app' build/macos/Build/Products/Release/app/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
