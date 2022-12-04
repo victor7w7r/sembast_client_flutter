@@ -90,7 +90,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: bin-macos64
-          path: bbuild/macos/Build/Products/Release/zip
+          path: build/macos/Build/Products/Release/zip
   linux-release:
     needs: build-linux
     name: Release to repository for Linux
