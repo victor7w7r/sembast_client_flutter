@@ -76,21 +76,23 @@ jobs:
         run: flutter config --enable-macos-desktop
       - name: Build artifacts
         run: flutter build macos --release
+      - run: mkdir build/macos/Build/Products/Release/app
+      - run: mv -r 'build/macos/Build/Products/Release/Sembast Client.app' build/macos/Build/Products/Release/app/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: sembast_client_flutter_macos64.zip
-          directory: build/macos/Build/Products/Release
+          directory: build/macos/Build/Products/Release/app
       - name: Make zip directory
-        run: mkdir build/macos/Build/Products/Release/zip
+        run: mkdir build/macos/Build/Products/Release/app/zip
       - name: Move zip directory
-        run: mv build/macos/Build/Products/Release/sembast_client_flutter_macos64.zip build/macos/Build/Products/Release/zip/
+        run: mv build/macos/Build/Products/Release/app/sembast_client_flutter_macos64.zip build/macos/Build/Products/Release/app/zip
       - name: Release Upload
         uses: actions/upload-artifact@v2
         with:
           name: bin-macos64
-          path: build/macos/Build/Products/Release/zip
+          path: build/macos/Build/Products/Release/app/zip
   linux-release:
     needs: build-linux
     name: Release to repository for Linux
