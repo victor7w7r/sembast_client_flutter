@@ -93,7 +93,7 @@ jobs:
           path: build/linux/x64/release/bundle/zip
   linux-release:
     needs: build-linux
-    name: Release to Repository for Linux
+    name: Release to repository for Linux
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
@@ -105,8 +105,8 @@ jobs:
           draft: true
           files: bin-*/*
   win-release:
-    needs: build-linux
-    name: Release to Repository for Windows
+    needs: build-win
+    name: Release to repository for Windows
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
@@ -118,8 +118,8 @@ jobs:
           draft: true
           files: bin-*/*
   macos-release:
-    needs: build-linux
-    name: Release to Repository for MacOS
+    needs: build-macos
+    name: Release to repository for MacOS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
