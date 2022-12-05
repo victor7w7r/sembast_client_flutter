@@ -46,10 +46,17 @@ class Layout extends HookWidget {
         extendBodyBehindAppBar: true,
         backgroundColor:Colors.transparent,
         appBar: AppBar(
-          toolbarHeight: isMacOS ? 90 : 50,
           backgroundColor: Colors.transparent,
+          leading: isMacOS ? nil : null,
+          actions: isMacOS ? [Builder(
+            builder: (ctx) => IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: Scaffold.of(ctx).openDrawer
+            )
+          )] : null
         ),
-        drawer: const DrawerApp(),
+        drawer: isMacOS ? null : const DrawerApp(),
+        endDrawer: isMacOS ? const DrawerApp() : null,
         bottomNavigationBar: !isDb || isStore ? FeatureDisc(
           id: 'feature2',
           above: true,
@@ -71,6 +78,7 @@ class Layout extends HookWidget {
         ) : null,
         body: BodyBuilder(isStore: isStore, index: index.value)
       ),
+      if(isMacOS) const MacosMenubar(),
       const WindowTitleBar()
     ]);
   }

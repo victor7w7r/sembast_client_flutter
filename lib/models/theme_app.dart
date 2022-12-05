@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_acrylic/flutter_acrylic.dart' show WindowEffect;
 
-
 class ThemeApp {
 
   ThemeApp(

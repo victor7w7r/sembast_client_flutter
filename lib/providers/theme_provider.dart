@@ -39,7 +39,7 @@ class ThemeNotifier extends Notifier<ThemeApp> {
     color: isLinux
       ? state.winColor
       : state.isDark
-        ? state.winColor.withOpacity(0.2)
+        ? state.winColor.withOpacity(0.5)
         : state.winColor.withOpacity(0.7),
     dark: state.isDark
   );

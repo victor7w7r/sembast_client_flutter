@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:niku/namespace.dart' as n;
+import 'package:sembast_client_flutter/widgets/nil.dart';
 
 class FeatureDisc extends StatelessWidget {
 
@@ -37,7 +38,7 @@ class FeatureDisc extends StatelessWidget {
       enablePulsingAnimation: true,
       openDuration: const Duration(milliseconds: 500),
       description: n.Text(description),
-      tapTarget: icon != null ? Icon(icon, color: Colors.black) : Container(),
+      tapTarget: icon != null ? Icon(icon, color: Colors.black) : nil,
       child: child
     );
 }

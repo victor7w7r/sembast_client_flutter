@@ -74,6 +74,9 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "Puedes subir el archivo de base de datos desde aquí para hacerlo de manera gráfica\n si lo haces en el tab de 'Inicio', no podrás usar el terminal",
     "Flujo de trabajo",
     "Si subiste tu archivo en 'Inicio', debes elegir el store que se te aparecerá al subir, para que todas las opciones se habiliten",
+    "Cambiar de modo oscuro",
+    "Cambiar de idioma",
+    "Salir de Sembast Client"
   ];
 
   List<String> dictEng = [
@@ -150,6 +153,9 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "You can upload the database file from here to do it graphically\n if you do it in 'Home' tab, you will not be able to use the terminal",
     "Workflow",
     "If you uploaded your file in 'Home', you must choose the store that will appear to you when uploading, so that all options are enabled",
+    "Change to dark mode",
+    "Change language",
+    "Exit Sembast Client"
   ];
 
   return isEng
