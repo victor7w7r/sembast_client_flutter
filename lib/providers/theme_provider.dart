@@ -1,7 +1,6 @@
 import 'dart:async' show Timer;
 
-import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart' show Color;
 import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

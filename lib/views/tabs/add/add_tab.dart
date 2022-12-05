@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:code_editor/code_editor.dart';
 import 'package:niku/namespace.dart' as n;
-import 'package:niku/niku.dart';
+import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';
@@ -80,7 +80,7 @@ class AddTab extends StatelessWidget {
         ..fontStyle = FontStyle.italic
         ..textAlign = TextAlign.right
         ..n.bottom = 15
-        ..n.right = 25,
+        ..n.right = 25
     ]);
   }
 }

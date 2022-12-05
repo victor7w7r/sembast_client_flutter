@@ -6,7 +6,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   bitsdojo_window_windows
   desktop_drop
   flutter_acrylic
-  permission_handler_windows
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

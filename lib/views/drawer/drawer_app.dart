@@ -33,7 +33,7 @@ class DrawerApp extends StatelessWidget {
               isDarkModeEnabled: theme.isDark,
               onStateChanged: (_) =>
                 context.read(themeProvider.notifier).toggle()
-            ),
+            )
           ]),
           n.Row([
             n.Text(dict(1, lang))

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:niku/namespace.dart' as n;
+
 import 'package:sembast_client_flutter/widgets/nil.dart';
 
 class FeatureDisc extends StatelessWidget {

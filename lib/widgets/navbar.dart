@@ -25,5 +25,4 @@ class NavBar extends StatelessWidget {
     onTap: onTap,
     items: items
   );
-
 }

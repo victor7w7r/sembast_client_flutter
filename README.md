@@ -8,6 +8,7 @@ A GUI client for basic manipulation of sembast database files
 
 - Basic notion of JSON and NoSQL
 - Basic usage of sembast database
+- ⚠️ Only works in desktop apps, mobile and web is not supported
 
 ## Features
 

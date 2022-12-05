@@ -4,10 +4,9 @@ import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:flutter/widgets.dart';
 
 import 'package:riverpod_context/riverpod_context.dart';
-import 'package:sembast_client_flutter/config/dict.dart';
 
-import 'package:sembast_client_flutter/providers/lang_provider.dart';
-import 'package:sembast_client_flutter/providers/theme_provider.dart';
+import 'package:sembast_client_flutter/config/dict.dart';
+import 'package:sembast_client_flutter/providers/index.dart';
 
 class MacosMenubar extends StatelessWidget {
 

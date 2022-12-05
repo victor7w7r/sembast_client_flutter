@@ -25,7 +25,7 @@ class SembastClientApp extends StatelessWidget {
   Widget build(context) => FeatureDiscovery(
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme:  ThemeData(
+      theme: ThemeData(
         useMaterial3: true,
         splashFactory: InkRipple.splashFactory
       ),

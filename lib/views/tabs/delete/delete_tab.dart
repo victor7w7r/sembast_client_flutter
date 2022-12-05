@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:niku/namespace.dart' as n;
-import 'package:niku/niku.dart';
+import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';
@@ -47,7 +47,7 @@ class DeleteTab extends StatelessWidget {
           ElevatedButton(
             onPressed: () => ctl.requestAll(context, lang),
             child: n.Text(dict(59, lang))
-          ),
+          )
         ])
           ..direction = Axis.horizontal
           ..crossAxisAlignment = WrapCrossAlignment.center

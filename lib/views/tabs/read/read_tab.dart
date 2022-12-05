@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:niku/namespace.dart' as n;
-import 'package:niku/niku.dart';
+import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';

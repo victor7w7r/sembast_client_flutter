@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' show Provider, ProviderRef;
 import 'package:random_color/random_color.dart' show ColorBrightness, RandomColor;
 
 import 'package:sembast_client_flutter/providers/theme_provider.dart';
