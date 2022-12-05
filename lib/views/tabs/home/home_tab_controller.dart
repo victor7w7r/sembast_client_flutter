@@ -64,7 +64,7 @@ class HomeTabController extends ChangeNotifier {
 
   void request(BuildContext context, bool lang, String? path) {
 
-    late SembastCodec codec;
+    late final SembastCodec codec;
     final lines = File(path!).readAsLinesSync();
 
     if(lines.isEmpty) {

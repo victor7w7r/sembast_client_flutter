@@ -19,8 +19,8 @@ class TerminalTab extends HookWidget {
   @override
   Widget build(context) {
 
-    final dark = context.watch(isDarkProvider);
     final lang = context.watch(langProvider);
+    final theme = context.watch(themeProvider);
 
     final ctl = context.watch(terminalTabController);
 
@@ -41,7 +41,8 @@ class TerminalTab extends HookWidget {
         ..fontSize = 20,
       if(!ctl.loading && ctl.path == "" && !ctl.error) Niku(FloatingActionButton(
         onPressed: () => ctl.buttonRequest(context, lang),
-        backgroundColor: Colors.blue,
+        backgroundColor: theme.winColor,
+        foregroundColor: theme.isDark ? Colors.white : Colors.black,
         child: const Icon(Icons.upload),
       ))
         ..right = 25
@@ -55,7 +56,7 @@ class TerminalTab extends HookWidget {
         ..mainAxisAlignment = MainAxisAlignment.center,
       if(!ctl.loading && ctl.path == "" && !ctl.error) Niku(DragDrop(
           lang: lang,
-          dark: dark,
+          dark: theme.isDark,
           drag: (t) => ctl.dragRequest(context, lang, t.files)
         ))
           ..center,
@@ -64,7 +65,7 @@ class TerminalTab extends HookWidget {
         controller: ctl.terminalController,
         theme: TerminalThemes.whiteOnBlack,
         autofocus: true,
-        backgroundOpacity: dark ? 0.2 : 0.7,
+        backgroundOpacity: theme.isDark ? 0.2 : 0.7,
       ))
           ..w = context.mediaQuerySize.width - 100
           ..h = context.mediaQuerySize.height - 300

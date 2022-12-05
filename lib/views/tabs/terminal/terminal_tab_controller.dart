@@ -13,7 +13,6 @@ import 'package:xterm/xterm.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
-import 'package:sembast_client_flutter/utils/download.dart';
 import 'package:sembast_client_flutter/utils/index.dart';
 
 class TerminalTabController extends ChangeNotifier {

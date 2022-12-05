@@ -23,7 +23,7 @@ class SembastClientApp extends StatelessWidget {
   @override
   Widget build(context) => MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(
+    theme:  ThemeData(
       useMaterial3: true,
       splashFactory: InkRipple.splashFactory
     ),

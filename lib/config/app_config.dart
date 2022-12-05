@@ -7,13 +7,13 @@ import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart' show getTemporaryDirectory;
 import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
 
-import 'package:sembast_client_flutter/providers/theme_provider.dart';
+import 'package:sembast_client_flutter/models/theme_app.dart';
 import 'package:sembast_client_flutter/utils/platforms.dart';
 
 @singleton
 class AppConfig {
 
-  late SharedPreferences prefs;
+  late final SharedPreferences prefs;
   ThemeApp theme = ThemeApp.dark(true);
   bool isEng = true;
   String tempPath = "";
@@ -40,10 +40,10 @@ class AppConfig {
 
     Option.fromNullable(config.prefs.getBool('dark')).fold(
       () => config.prefs.setBool('dark', true)
-        .then((_) => config.theme = ThemeApp.dark(!isWindows && !isMacOS)),
+        .then((_) => config.theme = ThemeApp.dark(isLinux)),
       (dark) => config.theme = dark
-        ? ThemeApp.dark(!isWindows && !isMacOS)
-        : ThemeApp.light(!isWindows && !isMacOS)
+        ? ThemeApp.dark(isLinux)
+        : ThemeApp.light(isLinux)
     );
 
     Option.fromNullable(config.prefs.getBool('lang')).fold(

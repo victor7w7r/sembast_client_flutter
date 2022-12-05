@@ -18,6 +18,7 @@ class DrawerApp extends StatelessWidget {
     final lang = context.watch(langProvider);
 
     return Drawer(
+      backgroundColor: theme.winColor.withOpacity(0.8),
       child: n.Stack([
         n.Text('Sembast Client for Flutter')
           ..mt = 30
@@ -31,7 +32,7 @@ class DrawerApp extends StatelessWidget {
             DayNightSwitcher(
               isDarkModeEnabled: theme.isDark,
               onStateChanged: (_) =>
-                context.read(themeProvider.notifier).toggle(),
+                context.read(themeProvider.notifier).toggle()
             ),
           ]),
           n.Row([

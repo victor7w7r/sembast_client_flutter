@@ -19,7 +19,7 @@ class HomeTab extends StatelessWidget {
 
     final db = context.watch(dbProvider);
     final lang = context.watch(langProvider);
-    final dark = context.watch(isDarkProvider);
+    final theme = context.watch(themeProvider);
 
     final ctl = context.watch(homeTabController);
 
@@ -31,7 +31,8 @@ class HomeTab extends StatelessWidget {
         ..fontSize = 35,
       Niku(FloatingActionButton(
         onPressed: () => ctl.buttonRequest(context, lang, db.db != null),
-        backgroundColor: Colors.blue,
+        backgroundColor: theme.winColor,
+        foregroundColor: theme.isDark ? Colors.white : Colors.black,
         child: Icon(db.db == null ? Icons.upload : Icons.close),
       ))
         ..right = 25
@@ -39,13 +40,13 @@ class HomeTab extends StatelessWidget {
       db.db == null ? (
         Niku(DragDrop(
           lang: lang,
-          dark: dark,
+          dark: theme.isDark,
           drag: (t) => ctl.dragRequest(context, lang, t.files)
         ))
           ..center
       ) : Niku(DataLoaded(
         lang: lang,
-        dark: dark,
+        dark: theme.isDark,
         dbName: db.dbName,
         storeName: db.storeName,
         ctl: ctl.storectl,

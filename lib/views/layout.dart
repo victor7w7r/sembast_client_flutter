@@ -18,6 +18,7 @@ class Layout extends HookWidget {
   Widget build(context) {
 
     final isDark = context.watch(isDarkProvider);
+    final magicant = context.watch(magicantProvider);
     final isStore = context.watch(storeSelProvider);
     final isDb = context.watch(isDbOpenProvider);
     final lang = context.watch(langProvider);
@@ -25,7 +26,7 @@ class Layout extends HookWidget {
     final index = useState<int>(0);
 
     useEffect(() {
-      context.read(themeProvider.notifier).initAcrylic();
+      context.read(themeProvider.notifier).acrylic();
       return null;
     }, []);
 
@@ -41,7 +42,10 @@ class Layout extends HookWidget {
         bottomNavigationBar: !isDb || isStore ? NavBar(
           index: index.value,
           isDark: context.watch(isDarkProvider),
-          onTap: (i) => index.value = i,
+          onTap: (i){
+            magicant.randomize();
+            index.value = i;
+          },
           items: isStore
             ? dbLoadedIconsTab(isDark, !lang)
             : iconsTab(isDark, !lang)

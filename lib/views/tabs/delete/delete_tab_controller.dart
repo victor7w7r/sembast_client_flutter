@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:sembast_client_flutter/config/dict.dart';
-import 'package:sembast_client_flutter/functions/delete.dart';
 import 'package:sembast_client_flutter/functions/index.dart';
 import 'package:sembast_client_flutter/providers/db_provider.dart';
 import 'package:sembast_client_flutter/utils/alerts.dart';
