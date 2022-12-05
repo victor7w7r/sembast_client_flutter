@@ -16,8 +16,8 @@ class ThemeNotifier extends Notifier<ThemeApp> {
 
   Future<void> toggle() async {
     !state.isDark
-      ? state = ThemeApp.dark(isLinux)
-      : state = ThemeApp.light(isLinux);
+      ? state = ThemeApp.dark()
+      : state = ThemeApp.light();
     acrylic();
     await locator.get<AppConfig>().prefs.setBool('dark', state.isDark);
   }

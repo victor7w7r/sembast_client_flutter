@@ -25,14 +25,14 @@ class MacosMenubar extends StatelessWidget {
           PlatformMenuItemGroup(
             members: [
               PlatformMenuItem(
-                label: dict(72, lang),
+                label: dict(73, lang),
                 onSelected: context.read(themeProvider.notifier).toggle,
                 shortcut: const SingleActivator(LogicalKeyboardKey.keyB,
                   meta: true
                 )
               ),
               PlatformMenuItem(
-                label: dict(73, lang),
+                label: dict(74, lang),
                 onSelected: context.read(langProvider.notifier).toggle,
                 shortcut: const SingleActivator(LogicalKeyboardKey.keyL,
                   meta: true
@@ -43,7 +43,7 @@ class MacosMenubar extends StatelessWidget {
           PlatformMenuItemGroup(
             members: [
               PlatformMenuItem(
-                label: dict(74, lang),
+                label: dict(75, lang),
                 onSelected: () => exit(0),
                 shortcut: const SingleActivator(LogicalKeyboardKey.keyQ,
                   meta: true),

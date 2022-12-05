@@ -14,7 +14,7 @@ import 'package:sembast_client_flutter/utils/platforms.dart';
 class AppConfig {
 
   late final SharedPreferences prefs;
-  ThemeApp theme = ThemeApp.dark(true);
+  ThemeApp theme = ThemeApp.dark();
   bool isEng = true;
   bool firstTime = false;
   String tempPath = "";
@@ -41,10 +41,10 @@ class AppConfig {
 
     Option.fromNullable(config.prefs.getBool('dark')).fold(
       () => config.prefs.setBool('dark', true)
-        .then((_) => config.theme = ThemeApp.dark(isLinux)),
+        .then((_) => config.theme = ThemeApp.dark()),
       (dark) => config.theme = dark
-        ? ThemeApp.dark(isLinux)
-        : ThemeApp.light(isLinux)
+        ? ThemeApp.dark()
+        : ThemeApp.light()
     );
 
     Option.fromNullable(config.prefs.getBool('lang')).fold(

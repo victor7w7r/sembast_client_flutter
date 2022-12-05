@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_acrylic/flutter_acrylic.dart' show WindowEffect;
 
+import 'package:sembast_client_flutter/utils/platforms.dart';
+
 class ThemeApp {
 
   ThemeApp(
@@ -16,18 +18,18 @@ class ThemeApp {
   final Color winColor;
   final WindowEffect winEffect;
 
-  factory ThemeApp.light(bool isSolid) => ThemeApp(
+  factory ThemeApp.light() => ThemeApp(
     false,
     ThemeMode.light,
     Colors.white,
-    isSolid ? WindowEffect.solid : WindowEffect.aero
+    !isWindows ? WindowEffect.solid : WindowEffect.aero
   );
 
-  factory ThemeApp.dark(bool isSolid) => ThemeApp(
+  factory ThemeApp.dark() => ThemeApp(
     true,
     ThemeMode.dark,
     const Color(0xFF212121),
-    isSolid ? WindowEffect.solid : WindowEffect.aero
+    !isWindows ? WindowEffect.solid : WindowEffect.aero
   );
 
   ThemeApp copyWith({
