@@ -31,11 +31,8 @@ class Layout extends HookWidget {
       context.read(themeProvider.notifier).acrylic();
       if(locator.get<AppConfig>().firstTime) {
         WidgetsBinding.instance.addPostFrameCallback((_) =>
-          FeatureDiscovery.discoverFeatures(context, [
-              'feature1',
-            ]
-          )
-        );
+          FeatureDiscovery.discoverFeatures(context, ['feature1']
+        ));
         locator.get<AppConfig>().prefs.setBool('first', false);
       }
       return null;
