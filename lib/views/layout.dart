@@ -44,15 +44,14 @@ class Layout extends HookWidget {
     return n.Stack([
       Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor:Colors.transparent,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: isMacOS ? nil : null,
           actions: isMacOS ? [Builder(
-            builder: (ctx) => IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: Scaffold.of(ctx).openDrawer
-            )
+            builder: (ctx) => n.IconButton(Icons.menu)
+              ..mr = 10
+              ..onPressed = Scaffold.of(ctx).openEndDrawer,
           )] : null
         ),
         drawer: isMacOS ? null : const DrawerApp(),
