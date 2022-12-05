@@ -23,4 +23,5 @@ This app was made with the 036 Architecture for Flutter
 ## Known Issues
 
 - in macOS, white mode and random colors is not working properly
+- Stores with 100 elements or more, the JSON viewer slows down the program
 - CLI for UNIX environments don't work automatically when the file is uploaded
