@@ -93,8 +93,8 @@ class TerminalTabController extends ChangeNotifier {
 
   void initPty() {
     pty = Pty.start(
-      Platform.isMacOS || Platform.isLinux
-        ? "${_app.tempPath}/${_app.cliApp} $path"
+      isMacOS || isLinux
+        ? "bash"
         : "${_app.tempPath}\\${_app.cliApp} $path",
       columns: terminal.viewWidth,
       rows: terminal.viewHeight,
@@ -108,6 +108,14 @@ class TerminalTabController extends ChangeNotifier {
     pty.exitCode.then((code) => terminal.write(dict(68, ref.read(langProvider), [code.toString()])));
     terminal.onOutput = (data) => pty.write(const Utf8Encoder().convert(data));
     terminal.onResize = (w, h, _, __) => pty.resize(h, w);
+
+    if(isMacOS || isLinux) {
+      Future.delayed(const Duration(seconds: 1), () =>
+        terminal.write("${_app.tempPath}/${_app.cliApp} $path")
+      );
+    }
+
+
   }
 
   @override

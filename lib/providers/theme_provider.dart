@@ -23,15 +23,20 @@ class ThemeNotifier extends Notifier<ThemeApp> {
   }
 
   void colorize(Color color) {
-    double linear = 0.1;
-    Color interpolatorBack;
-    Timer.periodic(const Duration(milliseconds: 30), (t) {
-      interpolatorBack = Color.lerp(state.winColor, color, linear)!;
-      state = state.copyWith(winColor: interpolatorBack);
+    if(isWindows) {
+      double linear = 0.1;
+      Color interpolatorBack;
+      Timer.periodic(const Duration(milliseconds: 30), (t) {
+        interpolatorBack = Color.lerp(state.winColor, color, linear)!;
+        state = state.copyWith(winColor: interpolatorBack);
+        acrylic();
+        linear += 0.1;
+        if(linear >= 1) t.cancel();
+      });
+    } else {
+      state = state.copyWith(winColor: color);
       acrylic();
-      linear += 0.1;
-      if(linear >= 1) t.cancel();
-    });
+    }
   }
 
   void acrylic() => Window.setEffect(
