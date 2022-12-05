@@ -16,6 +16,7 @@ class AppConfig {
   late final SharedPreferences prefs;
   ThemeApp theme = ThemeApp.dark(true);
   bool isEng = true;
+  bool firstTime = false;
   String tempPath = "";
   String cliApp = "";
 
@@ -50,6 +51,12 @@ class AppConfig {
       () => config.prefs.setBool('lang', true)
         .then((_) => config.isEng = true),
       (lang) => config.isEng = lang
+    );
+
+    Option.fromNullable(config.prefs.getBool('first')).fold(
+      () => config.prefs.setBool('first', true)
+        .then((_) => config.firstTime = true),
+      (_) => config.firstTime = false
     );
 
     await Window.initialize();

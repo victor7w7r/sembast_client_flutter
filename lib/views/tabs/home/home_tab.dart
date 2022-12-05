@@ -29,12 +29,20 @@ class HomeTab extends StatelessWidget {
         ..n.top = 60
         ..n.left = 35
         ..fontSize = 35,
-      Niku(FloatingActionButton(
-        onPressed: () => ctl.buttonRequest(context, lang, db.db != null),
-        backgroundColor: theme.winColor,
-        foregroundColor: theme.isDark ? Colors.white : Colors.black,
-        child: Icon(db.db == null ? Icons.upload : Icons.close),
-      ))
+      Niku(FeatureDisc(
+        id: 'feature1',
+        above: true,
+        backgroundColor: Colors.purple,
+        title: dict(69, lang),
+        description: dict(70, lang),
+        icon: Icons.upload,
+        child: FloatingActionButton(
+          onPressed: () => ctl.buttonRequest(context, lang, db.db != null),
+          backgroundColor: theme.winColor,
+          foregroundColor: theme.isDark ? Colors.white : Colors.black,
+          child: Icon(db.db == null ? Icons.upload : Icons.close),
+        ))
+      )
         ..right = 25
         ..bottom = 25,
       db.db == null ? (
