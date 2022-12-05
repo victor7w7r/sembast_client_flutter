@@ -20,6 +20,7 @@ This app was made with the 036 Architecture for Flutter
 
 ![Alt text](flutterarch.png?raw=true "Title")
 
-## Known Problems
+## Known Issues
 
 - in macOS, white mode and random colors is not working properly
+- CLI for UNIX environments don't work automatically when the file is uploaded
