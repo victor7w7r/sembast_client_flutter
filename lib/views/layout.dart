@@ -8,7 +8,6 @@ import 'package:riverpod_context/riverpod_context.dart';
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
 import 'package:sembast_client_flutter/utils/index.dart';
-import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/views/drawer/drawer_app.dart';
 import 'package:sembast_client_flutter/views/layout_widgets.dart';
 import 'package:sembast_client_flutter/widgets/index.dart';
