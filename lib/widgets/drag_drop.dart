@@ -14,7 +14,7 @@ class DragDrop extends StatelessWidget {
     super.key,
     required this.drag,
     required this.lang,
-    required this.dark,
+    required this.dark
   });
 
   final void Function(DropDoneDetails details) drag;

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart' show WindowEffect;
 
 import 'package:sembast_client_flutter/utils/platforms.dart';
 
-class ThemeApp {
+part 'theme_app.freezed.dart';
 
-  ThemeApp(
-    this.isDark,
-    this.themeMode,
-    this.winColor,
-    this.winEffect
-  );
+@freezed
+class ThemeApp with _$ThemeApp {
 
-  final bool isDark;
-  final ThemeMode themeMode;
-  final Color winColor;
-  final WindowEffect winEffect;
+  const factory ThemeApp(
+    bool isDark,
+    ThemeMode themeMode,
+    Color winColor,
+    WindowEffect winEffect
+  ) = _ThemeApp;
 
   factory ThemeApp.light() => ThemeApp(
     false,
@@ -31,19 +30,4 @@ class ThemeApp {
     const Color(0xFF212121),
     !isWindows ? WindowEffect.solid : WindowEffect.aero
   );
-
-  ThemeApp copyWith({
-    bool? isDark,
-    ThemeMode? themeMode,
-    ThemeData? themeLightData,
-    ThemeData? themeDarkData,
-    Color? winColor,
-    WindowEffect? winEffect
-  }) => ThemeApp(
-    isDark ?? this.isDark,
-    themeMode ?? this.themeMode,
-    winColor ?? this.winColor,
-    winEffect ?? this.winEffect
-  );
-
 }
