@@ -7,6 +7,7 @@ import 'package:riverpod_context/riverpod_context.dart';
 
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/utils/index.dart';
 import 'package:sembast_client_flutter/utils/platforms.dart';
 import 'package:sembast_client_flutter/views/drawer/drawer_app.dart';
 import 'package:sembast_client_flutter/views/layout_widgets.dart';
@@ -27,7 +28,7 @@ class Layout extends HookWidget {
 
     final index = useState<int>(0);
 
-    useEffect(() {
+    useMount(() {
       context.read(themeProvider.notifier).acrylic();
       if(locator.get<AppConfig>().firstTime) {
         WidgetsBinding.instance.addPostFrameCallback((_) =>
@@ -35,8 +36,7 @@ class Layout extends HookWidget {
         ));
         locator.get<AppConfig>().prefs.setBool('first', false);
       }
-      return null;
-    }, []);
+    });
 
     return n.Stack([
       Scaffold(

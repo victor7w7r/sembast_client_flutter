@@ -4,11 +4,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:niku/namespace.dart' as n;
 import 'package:niku/niku.dart' show Niku;
 import 'package:riverpod_context/riverpod_context.dart';
-import 'package:sembast_client_flutter/config/dict.dart';
-import 'package:sembast_client_flutter/providers/index.dart';
-import 'package:sembast_client_flutter/widgets/drag_drop.dart';
 import 'package:xterm/xterm.dart';
 
+import 'package:sembast_client_flutter/config/dict.dart';
+import 'package:sembast_client_flutter/providers/index.dart';
+import 'package:sembast_client_flutter/utils/hooks.dart';
+import 'package:sembast_client_flutter/widgets/drag_drop.dart';
 import 'package:sembast_client_flutter/utils/context_extensions.dart';
 import 'package:sembast_client_flutter/views/tabs/terminal/terminal_tab_controller.dart';
 
@@ -24,10 +25,7 @@ class TerminalTab extends HookWidget {
 
     final ctl = context.watch(terminalTabController);
 
-    useEffect((){
-      WidgetsBinding.instance.endOfFrame.then((_) => ctl.init());
-      return null;
-    },[]);
+    useMount(() => WidgetsBinding.instance.endOfFrame.then((_) => ctl.init()));
 
     return n.Stack([
       n.Text("Terminal")
