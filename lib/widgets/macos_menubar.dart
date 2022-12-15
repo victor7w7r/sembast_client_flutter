@@ -3,7 +3,7 @@ import 'dart:io' show exit;
 import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:flutter/widgets.dart';
 
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show RiverpodContext;
 
 import 'package:sembast_client_flutter/config/dict.dart';
 import 'package:sembast_client_flutter/providers/index.dart';

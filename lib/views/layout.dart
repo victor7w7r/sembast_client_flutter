@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:feature_discovery/feature_discovery.dart' show FeatureDiscovery;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:niku/namespace.dart' as n;
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show RiverpodContext;
 
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';

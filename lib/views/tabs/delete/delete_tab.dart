@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:niku/namespace.dart' as n;
 import 'package:niku/niku.dart' show Niku;
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show RiverpodContext;
 
 import 'package:sembast_client_flutter/config/index.dart';
 import 'package:sembast_client_flutter/providers/index.dart';

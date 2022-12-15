@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:niku/namespace.dart' as n;
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show RiverpodContext;
 
 import 'package:sembast_client_flutter/providers/index.dart';
 import 'package:sembast_client_flutter/config/dict.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart' show HookWidget;
 
 import 'package:niku/namespace.dart' as n;
 import 'package:niku/niku.dart' show Niku;
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show RiverpodContext;
 import 'package:xterm/xterm.dart';
 
 import 'package:sembast_client_flutter/config/dict.dart';
