@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:feature_discovery/feature_discovery.dart' show FeatureDiscovery;
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderScope;
 import 'package:nester/nester.dart' show Nester;
-import 'package:riverpod_context/riverpod_context.dart';
+import 'package:riverpod_context/riverpod_context.dart' show InheritedConsumer, RiverpodContext;
 
 import 'package:sembast_client_flutter/config/locator.dart';
 import 'package:sembast_client_flutter/providers/theme_provider.dart';
