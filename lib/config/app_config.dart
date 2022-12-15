@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bitsdojo_window/bitsdojo_window.dart' show doWhenWindowReady, appWindow;
+import 'package:bitsdojo_window/bitsdojo_window.dart' show appWindow, doWhenWindowReady;
 import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
 import 'package:fpdart/fpdart.dart' show Option, Task;
 import 'package:injectable/injectable.dart';
