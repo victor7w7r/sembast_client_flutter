@@ -1,6 +1,6 @@
 String dict(int index, bool isEng, [List<String>? custom]) {
 
-  List<String> dictEsp = [
+  final dictEsp = [
     "Modo Oscuro: ",
     "Inglés",
     "Español",
@@ -79,7 +79,7 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "Salir de Sembast Client"
   ];
 
-  List<String> dictEng = [
+  final dictEng = [
     "Dark Mode: ",
     "English",
     "Spanish",
@@ -158,7 +158,5 @@ String dict(int index, bool isEng, [List<String>? custom]) {
     "Exit Sembast Client"
   ];
 
-  return isEng
-    ? dictEsp[index]
-    : dictEng[index];
+  return isEng ? dictEsp[index] : dictEng[index];
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart' show appWindow, doWhenWindowReady;
 import 'package:flutter_acrylic/flutter_acrylic.dart' show Window;
-import 'package:fpdart/fpdart.dart' show Option, Task;
+import 'package:fpdart/fpdart.dart' show FpdartOnNullable, Task;
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart' show getTemporaryDirectory;
 import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
@@ -39,7 +39,7 @@ class AppConfig {
       config.cliApp = "sembast_cli_macos64";
     }
 
-    Option.fromNullable(config.prefs.getBool('dark')).fold(
+    config.prefs.getBool('dark').toOption().fold(
       () => config.prefs.setBool('dark', true)
         .then((_) => config.theme = ThemeApp.dark()),
       (dark) => config.theme = dark
@@ -47,13 +47,13 @@ class AppConfig {
         : ThemeApp.light()
     );
 
-    Option.fromNullable(config.prefs.getBool('lang')).fold(
+    config.prefs.getBool('lang').toOption().fold(
       () => config.prefs.setBool('lang', true)
         .then((_) => config.isEng = true),
       (lang) => config.isEng = lang
     );
 
-    Option.fromNullable(config.prefs.getBool('first')).fold(
+    config.prefs.getBool('first').toOption().fold(
       () => config.prefs.setBool('first', true)
         .then((_) => config.firstTime = true),
       (_) => config.firstTime = false
